@@ -8,15 +8,20 @@ namespace DataAccess
     {
         public static void Initialize(ModelBuilder modelBuilder)
         {
-            SetProjectUserRelation(modelBuilder);
-            SetRolePermissionRelation(modelBuilder);
-            SetUserAddressRelation(modelBuilder);
-            SetUserRoleRelation(modelBuilder);
+            modelBuilder.SetRelations();
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
+        }
+
+        private static void SetRelations(this ModelBuilder modelBuilder)
+        {
+            SetProjectUserRelation(modelBuilder);
+            SetRolePermissionRelation(modelBuilder);
+            SetUserAddressRelation(modelBuilder);
+            SetUserRoleRelation(modelBuilder);
         }
 
         private static void SetProjectUserRelation(ModelBuilder modelBuilder)
