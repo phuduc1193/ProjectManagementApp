@@ -16,6 +16,7 @@ namespace DataAccess
 
         public DbSet<BusinessModel.Models.User> Users { get; set; }
         public DbSet<BusinessModel.Models.Project> Projects { get; set; }
+        public DbSet<BusinessModel.Models.Role> Roles { get; set; }
         public DbSet<BusinessModel.Models.State> States { get; set; }
         public DbSet<BusinessModel.Models.Country> Countries { get; set; }
 
@@ -23,6 +24,12 @@ namespace DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<BusinessModel.Models.User>().ToTable("User");
+            modelBuilder.Entity<BusinessModel.Models.Project>().ToTable("Project");
+            modelBuilder.Entity<BusinessModel.Models.Role>().ToTable("Role");
+            modelBuilder.Entity<BusinessModel.Models.State>().ToTable("State");
+            modelBuilder.Entity<BusinessModel.Models.Country>().ToTable("Country");
+
             DBRelationInitializer.Initialize(modelBuilder);
         }
 
