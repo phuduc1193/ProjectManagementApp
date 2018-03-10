@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  projectmanagementapi:
+    image: projectmanagementapi
+    build:
+      context: .
+      dockerfile: ProjectManagement/Dockerfile
+  projectmanagementdb:
+    image: "microsoft/mssql-server-linux"
