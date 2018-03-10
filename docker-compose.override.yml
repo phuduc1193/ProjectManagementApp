@@ -10,7 +10,3 @@ services:
     environment:
       - SA_PASSWORD=48hEw5bDHSjfpSta
       - ACCEPT_EULA=Y
-networks:
-  default:
-    external:
-      name: nat
