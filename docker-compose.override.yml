@@ -5,12 +5,12 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "80:9000"
+      - 9000:80
   projectmanagementweb:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "80"
+      - 80:80
   projectmanagementdb:
     environment:
       - SA_PASSWORD=48hEw5bDHSjfpSta
