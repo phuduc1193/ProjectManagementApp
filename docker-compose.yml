@@ -6,10 +6,10 @@ services:
     build:
       context: .
       dockerfile: ProjectManagement/Dockerfile
-  projectmanagementweb:
-    image: projectmanagementweb
+  projectmanagementdb:
+    image: "microsoft/mssql-server-linux"
+  webapplication:
+    image: webapplication
     build:
       context: .
       dockerfile: WebApplication/Dockerfile
-  projectmanagementdb:
-    image: "microsoft/mssql-server-linux"
