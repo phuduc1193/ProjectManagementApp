@@ -1,6 +1,11 @@
 version: '3'
 
 services:
+  projectmanagementweb:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 80:80
   projectmanagementapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -10,8 +15,3 @@ services:
     environment:
       - SA_PASSWORD=48hEw5bDHSjfpSta
       - ACCEPT_EULA=Y
-  webapplication:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - 80:80

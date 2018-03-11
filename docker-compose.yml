@@ -1,6 +1,11 @@
 version: '3'
 
 services:
+  projectmanagementweb:
+    image: webapplication
+    build:
+      context: .
+      dockerfile: WebApplication/Dockerfile
   projectmanagementapi:
     image: projectmanagementapi
     build:
@@ -8,8 +13,3 @@ services:
       dockerfile: ProjectManagement/Dockerfile
   projectmanagementdb:
     image: "microsoft/mssql-server-linux"
-  webapplication:
-    image: webapplication
-    build:
-      context: .
-      dockerfile: WebApplication/Dockerfile
