@@ -14,9 +14,8 @@ namespace DataAccess
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<UserCredential>().ToTable("UserCredential");
-            modelBuilder.Entity<UserCredential>()
-                        .HasOne(uc => uc.User)
-                        .WithMany(u => u.UserCredentials);
+            modelBuilder.Entity<UserCredential>().HasOne(uc => uc.User)
+                        .WithMany(u => u.UserCredentials).HasForeignKey(u => u.Username);
         }
     }
 }

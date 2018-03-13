@@ -25,8 +25,8 @@ namespace WebApplication.Controllers
                 _logger.LogError("Failed LoginAsync DiscoveryClient", disco);
                 return string.Empty;
             }
-            var tokenClient = new TokenClient(disco.TokenEndpoint, credentials.Username, credentials.Password);
-            var tokenResponse = await tokenClient.RequestClientCredentialsAsync("ProjectManagementAPI");
+            var tokenClient = new TokenClient(disco.TokenEndpoint, "ResourceOwner", "ctkLz8gr");
+            var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync(credentials.Username, credentials.Password, "ProjectManagementAPI");
             if (tokenResponse.IsError)
             {
                 _logger.LogError("Failed LoginAsync", tokenResponse.Error);

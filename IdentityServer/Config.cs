@@ -20,9 +20,9 @@ namespace IdentityServer
             return new List<Client> {
                 new Client
                 {
-                    ClientId = "WebApplication",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = { new Secret("WebApplicationSecret".Sha256()) },
+                    ClientId = "ResourceOwner",
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    ClientSecrets = { new Secret("ctkLz8gr".Sha256()) },
                     AllowedScopes = { "ProjectManagementAPI" }
                 }
             };
