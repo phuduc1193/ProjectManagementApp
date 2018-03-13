@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BusinessModel.Models;
 using DataAccess;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectManagementAPI.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/Users")]
     public class UsersController : Controller

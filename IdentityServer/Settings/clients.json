@@ -3,6 +3,6 @@
     "ClientId": "1",
     "AllowedGrantTypes": "ClientCredentials",
     "APISecret": "ApiKey",
-    "AllowedScopes": "ProjectAPI"
+    "AllowedScopes": "ProjectManagementAPI"
   }
 ]

@@ -23,10 +23,19 @@ namespace ProjectManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             var connectionString = Configuration.GetConnectionString("ProjectManagementDB");
             services.AddDbContext<ProjectManagementContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddMvcCore()
+                    .AddAuthorization()
+                    .AddJsonFormatters();
+            services.AddAuthentication("Bearer")
+                    .AddIdentityServerAuthentication(options =>
+                    {
+                        options.Authority = Configuration.GetSection("ApiResources")["IdentityServer"];
+                        options.RequireHttpsMetadata = false;
+                        options.ApiName = "ProjectManagementAPI";
+                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
