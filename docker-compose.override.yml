@@ -15,3 +15,9 @@ services:
     environment:
       - SA_PASSWORD=48hEw5bDHSjfpSta
       - ACCEPT_EULA=Y
+  identityserver:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
