@@ -23,7 +23,7 @@ namespace ProjectManagement
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<ProjectManagementContext>();
+                    var context = services.GetRequiredService<ProjectDbContext>();
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)

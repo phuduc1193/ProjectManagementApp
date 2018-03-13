@@ -3,11 +3,9 @@ using ZNetCS.AspNetCore.Logging.EntityFrameworkCore;
 
 namespace WebApplication
 {
-    internal class ApplicationDbContext : DbContext
+    internal class WebClientDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
-        {
-        }
+        public WebClientDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<ExtendedLog> Logs { get; set; }
 

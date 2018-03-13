@@ -1,18 +1,12 @@
 ﻿using BusinessModel;
-using BusinessModel.Models.Relations;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
-using System.Security.Claims;
 
 namespace DataAccess
 {
-    public class ProjectManagementContext : DbContext
+    public class ProjectDbContext : DbContext
     {
-        public ProjectManagementContext(DbContextOptions<ProjectManagementContext> options) : base(options)
-        { }
+        public ProjectDbContext(DbContextOptions<ProjectDbContext> options) : base(options) { }
 
         public DbSet<BusinessModel.Models.User> Users { get; set; }
         public DbSet<BusinessModel.Models.Project> Projects { get; set; }

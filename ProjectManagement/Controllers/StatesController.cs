@@ -16,9 +16,9 @@ namespace ProjectManagementAPI.Controllers
     [Route("api/States")]
     public class StatesController : Controller
     {
-        private readonly ProjectManagementContext _context;
+        private readonly ProjectDbContext _context;
 
-        public StatesController(ProjectManagementContext context)
+        public StatesController(ProjectDbContext context)
         {
             _context = context;
         }

@@ -16,9 +16,9 @@ namespace ProjectManagementAPI.Controllers
     [Route("api/Roles")]
     public class RolesController : Controller
     {
-        private readonly ProjectManagementContext _context;
+        private readonly ProjectDbContext _context;
 
-        public RolesController(ProjectManagementContext context)
+        public RolesController(ProjectDbContext context)
         {
             _context = context;
         }

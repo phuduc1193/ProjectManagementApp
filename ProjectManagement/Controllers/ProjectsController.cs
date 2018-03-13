@@ -16,9 +16,9 @@ namespace ProjectManagementAPI.Controllers
     [Route("api/Projects")]
     public class ProjectsController : Controller
     {
-        private readonly ProjectManagementContext _context;
+        private readonly ProjectDbContext _context;
 
-        public ProjectsController(ProjectManagementContext context)
+        public ProjectsController(ProjectDbContext context)
         {
             _context = context;
         }

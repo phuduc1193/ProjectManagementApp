@@ -16,9 +16,9 @@ namespace ProjectManagementAPI.Controllers
     [Route("api/Users")]
     public class UsersController : Controller
     {
-        private readonly ProjectManagementContext _context;
+        private readonly ProjectDbContext _context;
 
-        public UsersController(ProjectManagementContext context)
+        public UsersController(ProjectDbContext context)
         {
             _context = context;
         }

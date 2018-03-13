@@ -11,11 +11,10 @@ services:
     build:
       context: .
       dockerfile: ProjectManagement/Dockerfile
-  projectmanagementdb:
-    image: "microsoft/mssql-server-linux"
   identityserver:
     image: identityserver
     build:
       context: .
       dockerfile: IdentityServer/Dockerfile
-
+  mssqldb:
+    image: "microsoft/mssql-server-linux"

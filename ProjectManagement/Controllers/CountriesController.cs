@@ -16,9 +16,9 @@ namespace ProjectManagementAPI.Controllers
     [Route("api/Countries")]
     public class CountriesController : Controller
     {
-        private readonly ProjectManagementContext _context;
+        private readonly ProjectDbContext _context;
 
-        public CountriesController(ProjectManagementContext context)
+        public CountriesController(ProjectDbContext context)
         {
             _context = context;
         }

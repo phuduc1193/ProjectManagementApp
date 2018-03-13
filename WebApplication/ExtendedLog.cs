@@ -7,16 +7,16 @@ namespace WebApplication
     {
         public ExtendedLog(IHttpContextAccessor accessor)
         {
-            string browser = accessor.HttpContext.Request.Headers["User-Agent"];
+            string browser = accessor.HttpContext?.Request?.Headers["User-Agent"];
             if (!string.IsNullOrEmpty(browser) && (browser.Length > 255))
             {
                 browser = browser.Substring(0, 255);
             }
 
             this.Browser = browser;
-            this.Host = accessor.HttpContext.Connection?.RemoteIpAddress?.ToString();
-            this.User = accessor.HttpContext.User?.Identity?.Name;
-            this.Path = accessor.HttpContext.Request.Path;
+            this.Host = accessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+            this.User = accessor.HttpContext?.User?.Identity?.Name;
+            this.Path = accessor.HttpContext?.Request.Path;
         }
 
         protected ExtendedLog()

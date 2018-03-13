@@ -15,5 +15,6 @@ namespace BusinessModel.Models
         public List<ProjectUser> ProjectUserRelation { get; set; }
         public List<UserAddress> UserAddressRelation { get; set; }
         public List<UserRole> UserRoleRelation { get; set; }
+        public List<UserCredential> UserCredentials { get; set; }
     }
 }

@@ -11,13 +11,12 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - 9000:80
-  projectmanagementdb:
-    environment:
-      - SA_PASSWORD=48hEw5bDHSjfpSta
-      - ACCEPT_EULA=Y
   identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - 9090:80
-
+  mssqldb:
+    environment:
+      - SA_PASSWORD=48hEw5bDHSjfpSta
+      - ACCEPT_EULA=Y
