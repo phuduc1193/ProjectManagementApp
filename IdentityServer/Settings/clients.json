@@ -1,8 +1,8 @@
 ﻿[
   {
     "ClientId": "1",
-    "AllowedGrantTypes": "ClientCredentials",
+    "AllowedGrantTypes": [ "ClientCredentials" ],
     "APISecret": "ApiKey",
-    "AllowedScopes": "ProjectManagementAPI"
+    "AllowedScopes": [ "ProjectManagementAPI" ]
   }
 ]
