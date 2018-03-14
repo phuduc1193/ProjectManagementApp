@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer.Models;
+using IdentityServer4.Services;
+using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -27,6 +30,11 @@ namespace IdentityServer
         {
             var connectionString = Configuration.GetConnectionString("Database");
             services.AddDbContext<IdentityDbContext>(options => options.UseSqlServer(connectionString));
+
+            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>()
+                    .AddTransient<IProfileService, ProfileService>()
+                    .AddTransient<IAuthRepository, AuthRepository>();
+
             services.AddIdentityServer()
                     .AddDeveloperSigningCredential()
                     .AddInMemoryApiResources(Config.GetApiResources())
