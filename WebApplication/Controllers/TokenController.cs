@@ -1,32 +1,36 @@
 using System;
 using System.Threading.Tasks;
+using BusinessModel;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using WebApplication.ViewModels;
 
 namespace WebApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Produces("application/json")]
+    [Route("api/Token")]
     public class TokenController : Controller
     {
         private readonly ILogger _logger;
-        public TokenController(ILogger<TokenController> logger)
+        private readonly IConfiguration _config;
+        public TokenController(ILogger<TokenController> logger, IConfiguration config)
         {
             _logger = logger;
+            _config = config;
         }
 
         [HttpPost]
-        public async Task<string> LoginAsync([FromBody]LoginCredentials credentials)
+        public string Login([FromBody]string username, [FromBody]string password)
         {
-            var disco = await DiscoveryClient.GetAsync("http://IdentityServer:9090");
-            if (disco.IsError)
+            var identityClient = Task.Run(async() => await DiscoveryClient.GetAsync(_config.GetSection("ApplicationEndpoint").GetValue<string>("IdentityServer"))).Result;
+            if (identityClient.IsError)
             {
-                _logger.LogError("Failed LoginAsync DiscoveryClient", disco);
+                _logger.LogError("Error DiscoveryClient.GetAsync", identityClient);
                 return string.Empty;
             }
-            var tokenClient = new TokenClient(disco.TokenEndpoint, "ResourceOwner", "ctkLz8gr");
-            var tokenResponse = await tokenClient.RequestResourceOwnerPasswordAsync(credentials.Username, credentials.Password, "ProjectManagementAPI");
+            var tokenClient = new TokenClient(identityClient.TokenEndpoint, "ResourceOwner", "ctkLz8gr");
+            var tokenResponse = Task.Run(async () => await tokenClient.RequestResourceOwnerPasswordAsync(username, password, "ProjectManagementAPI")).Result;
             if (tokenResponse.IsError)
             {
                 _logger.LogError("Failed LoginAsync", tokenResponse.Error);
